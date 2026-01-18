@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://oleksandrkovalenko12.github.io/expert-logistics.github.io/sitemap.xml
