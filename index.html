@@ -1,104 +1,60 @@
 <!DOCTYPE html>
-<html lang="pl" dir="ltr">
+<html lang="pl">
 
 <head>
-	<title>Snooker World - Portal Pasjonatów</title>
-	<meta name="description" content="Snooker World - portal dla pasjonatów. Poznaj zasady gry, punktację, turnieje oraz aktualny ranking snookerowy." />
-	<link href="style.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8">
+    <title>Laboratorium 2 - Album CSS</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-	<div id="masthead">
-		<h1>SNOOKER WORLD</h1>
-		<p>Precyzja, strategia, elegancja</p>
-	</div>
+    <div class="gallery">
+        <div class="photo photo-1" tabindex="0" aria-label="Zdjęcie numer 1 w albumie">1</div>
+        <div class="photo photo-2" tabindex="1" aria-label="Zdjęcie numer 2 w albumie">2</div>
+        <div class="photo photo-3" tabindex="2" aria-label="Zdjęcie numer 3 w albumie">3</div>
+        <div class="photo photo-4" tabindex="3" aria-label="Zdjęcie numer 4 w albumie">4</div>
+        <div class="photo photo-5" tabindex="4" aria-label="Zdjęcie numer 5 w albumie">5</div>
+        <div class="photo photo-6" tabindex="5" aria-label="Zdjęcie numer 6 w albumie">6</div>
+        <div class="photo photo-7" tabindex="6" aria-label="Zdjęcie numer 7 w albumie">7</div>
+        <div class="photo photo-8" tabindex="7" aria-label="Zdjęcie numer 8 w albumie">8</div>
+        <div class="photo photo-9" tabindex="8" aria-label="Zdjęcie numer 9 w albumie">9</div>
+        <div class="photo photo-10" tabindex="9" aria-label="Zdjęcie numer 10 w albumie">10</div>
+    </div>
 
-	<div id="top_nav">
-		<div id="top_nav_box">
-			<div class="path">Jesteś tutaj: Strona Główna</div>
-			<div class="link_nav"><a href="#">Newsy</a></div>
-			<div class="link_nav"><a href="#">Ranking</a></div>
-			<div class="link_nav"><a href="#">Kontakt</a></div>
-		</div>
-	</div>
+    <script>
+                // Wyłapujemy wszystkie zdjęcia
+        const photos = document.querySelectorAll('.photo');
 
-	<div id="container">
-		<div id="left_col">
-			<div class="module">
-				<div class="module_title">Menu Główne</div>
-				<div class="link_selected"><a href="index.html">Start</a></div>
-				<div class="link"><a href="#">Zasady gry</a></div>
-				<div class="sub_link"><a href="#">Punktacja</a></div>
-				<div class="sub_sub_link"><a href="#">Faule</a></div>
-				<div class="link"><a href="#">Turnieje</a></div>
-			</div>
-		</div>
+        // Wspólna funkcja do przełączania powiększenia zdjęcia
+        function togglePhoto(photo) {
+            // Sprawdzamy, czy wybrane zdjęcie jest już powiększone
+            const isActive = photo.classList.contains('active');
 
-		<div id="main_col">
-			<h2>Witaj w świecie zielonego sukna</h2>
-			<p>Snooker to najbardziej wymagająca odmiana bilarda, łącząca w sobie matematyczną precyzję z szachową
-				strategią. W naszym serwisie znajdziesz wszystko, co musisz wiedzieć o tym szlachetnym sporcie.</p>
+            // Krok 1: Usuwamy klasę 'active' ze WSZYSTKICH zdjęć (wszystkie wracają na miejsce)
+            photos.forEach(p => p.classList.remove('active'));
 
-			<h3>Punktacja bil w skrócie:</h3>
-			<p>Gra polega na wbijaniu bil czerwonych naprzemiennie z kolorowymi. Każdy kolor ma przypisaną wartość:</p>
-			<ul>
-				<li><strong>Czarna:</strong> 7 pkt</li>
-				<li><strong>Różowa:</strong> 6 pkt</li>
-				<li><strong>Niebieska:</strong> 5 pkt</li>
-				<li><strong>Brązowa:</strong> 4 pkt</li>
-				<li><strong>Zielona:</strong> 3 pkt</li>
-				<li><strong>Żółta:</strong> 2 pkt</li>
-				<li><strong>Czerwona:</strong> 1 pkt</li>
-			</ul>
-		</div>
+            // Krok 2: Jeśli zdjęcie nie było wcześniej powiększone, to dodajemy mu klasę 'active'
+            // (Dzięki temu, jak klikniesz powiększone zdjęcie, to po prostu wróci na swoje miejsce)
+            if (!isActive) {
+                photo.classList.add('active');
+            }
+        }
 
-		<div id="right_col">
-			<div class="module">
-				<div class="module_title">Tipy Dnia</div>
-				<div class="module_content">
-					Zawsze pamiętaj o kredowaniu tipa przed trudnym uderzeniem z dużą rotacją!
-				</div>
-			</div>
-			<div class="module">
-				<div class="module_title">Rekordy</div>
-				<div class="module_content">
-					Najszybszy break maksymalny (147): Ronnie O'Sullivan - 5 minut i 8 sekund.
-				</div>
-			</div>
-		</div>
-	</div>
+        photos.forEach(photo => {
+            // Obsługa kliknięcia myszką
+            photo.addEventListener('click', () => {
+                togglePhoto(photo);
+            });
 
-	<div id="footer">
-		<div class="footer_box">
-
-			<div class="footer_section">
-				<h4>Snooker World</h4>
-				<p>Portal dla pasjonatów snookera – newsy, rekordy i strategie gry.</p>
-			</div>
-
-			<div class="footer_section">
-				<h4>Nawigacja</h4>
-				<div class="link_foot"><a href="#">Start</a></div>
-				<div class="link_foot"><a href="#">Turnieje</a></div>
-				<div class="link_foot"><a href="#">Ranking</a></div>
-			</div>
-
-			<div class="footer_section">
-				<h4>Informacje</h4>
-				<div class="link_foot"><a href="#">O autorze</a></div>
-				<div class="link_foot"><a href="#">Polityka prywatności</a></div>
-				<div class="link_foot"><a href="#">Mapa strony</a></div>
-			</div>
-
-		</div>
-
-		<div class="footer_bottom">
-			© 2026 Snooker World
-		</div>
-	</div>
-
+            // Obsługa z klawiatury (klawisz Enter) dla zachowania zasad dostępności (WCAG)
+            photo.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    togglePhoto(photo);
+                }
+            });
+        });
+    </script>
 </body>
-
 
 </html>
