@@ -8,46 +8,40 @@
 </head>
 
 <body>
-
-    <div class="gallery">
-        <div class="photo photo-1" tabindex="0" aria-label="Zdjęcie numer 1 w albumie">1</div>
-        <div class="photo photo-2" tabindex="1" aria-label="Zdjęcie numer 2 w albumie">2</div>
-        <div class="photo photo-3" tabindex="2" aria-label="Zdjęcie numer 3 w albumie">3</div>
-        <div class="photo photo-4" tabindex="3" aria-label="Zdjęcie numer 4 w albumie">4</div>
-        <div class="photo photo-5" tabindex="4" aria-label="Zdjęcie numer 5 w albumie">5</div>
-        <div class="photo photo-6" tabindex="5" aria-label="Zdjęcie numer 6 w albumie">6</div>
-        <div class="photo photo-7" tabindex="6" aria-label="Zdjęcie numer 7 w albumie">7</div>
-        <div class="photo photo-8" tabindex="7" aria-label="Zdjęcie numer 8 w albumie">8</div>
-        <div class="photo photo-9" tabindex="8" aria-label="Zdjęcie numer 9 w albumie">9</div>
-        <div class="photo photo-10" tabindex="9" aria-label="Zdjęcie numer 10 w albumie">10</div>
-    </div>
+    <main>
+        <div class="gallery">
+            <div class="photo photo-1" tabindex="0" role="button" aria-label="Zdjęcie numer 1 w albumie">1</div>
+            <div class="photo photo-2" tabindex="0" role="button" aria-label="Zdjęcie numer 2 w albumie">2</div>
+            <div class="photo photo-3" tabindex="0" role="button" aria-label="Zdjęcie numer 3 w albumie">3</div>
+            <div class="photo photo-4" tabindex="0" role="button" aria-label="Zdjęcie numer 4 w albumie">4</div>
+            <div class="photo photo-5" tabindex="0" role="button" aria-label="Zdjęcie numer 5 w albumie">5</div>
+            <div class="photo photo-6" tabindex="0" role="button" aria-label="Zdjęcie numer 6 w albumie">6</div>
+            <div class="photo photo-7" tabindex="0" role="button" aria-label="Zdjęcie numer 7 w albumie">7</div>
+            <div class="photo photo-8" tabindex="0" role="button" aria-label="Zdjęcie numer 8 w albumie">8</div>
+            <div class="photo photo-9" tabindex="0" role="button" aria-label="Zdjęcie numer 9 w albumie">9</div>
+            <div class="photo photo-10" tabindex="0" role="button" aria-label="Zdjęcie numer 10 w albumie">10</div>
+        </div>
+    </main>
 
     <script>
-                // Wyłapujemy wszystkie zdjęcia
         const photos = document.querySelectorAll('.photo');
 
-        // Wspólna funkcja do przełączania powiększenia zdjęcia
         function togglePhoto(photo) {
-            // Sprawdzamy, czy wybrane zdjęcie jest już powiększone
             const isActive = photo.classList.contains('active');
 
-            // Krok 1: Usuwamy klasę 'active' ze WSZYSTKICH zdjęć (wszystkie wracają na miejsce)
             photos.forEach(p => p.classList.remove('active'));
 
-            // Krok 2: Jeśli zdjęcie nie było wcześniej powiększone, to dodajemy mu klasę 'active'
-            // (Dzięki temu, jak klikniesz powiększone zdjęcie, to po prostu wróci na swoje miejsce)
             if (!isActive) {
                 photo.classList.add('active');
             }
         }
 
         photos.forEach(photo => {
-            // Obsługa kliknięcia myszką
             photo.addEventListener('click', () => {
                 togglePhoto(photo);
             });
 
-            // Obsługa z klawiatury (klawisz Enter) dla zachowania zasad dostępności (WCAG)
+            // Znakomicie obsłużona nawigacja klawiaturą!
             photo.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') {
                     togglePhoto(photo);
